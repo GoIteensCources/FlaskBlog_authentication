@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>{{title}} to FlaskBlog</h1>
+
+<div class="container">
+    <form action="" method="post">
+    {{ form.csrf_token }}
+
+        {% for field in form if field.widget.input_type != 'hidden' %}
+
+        <div class="field mb-3 container-sm">
+            {{ field.label(class="form-label") }}
+            {{ field(class="form-control") }}
+        </div>
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="field_error">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% endfor %}
+    </form>
+</div>
+
+{% endblock %}

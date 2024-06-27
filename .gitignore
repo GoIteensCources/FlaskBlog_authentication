@@ -1,0 +1,5 @@
+.idea
+.venv
+isntance
+__pycache__.py
+*.db

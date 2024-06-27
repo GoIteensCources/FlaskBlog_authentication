@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Create New Post</h1>
+
+    <form method="post">
+        <div class="form-control">
+            <label for="title"> Title </label>
+            <input type="text" name="title" id="title"  placeholder="Post title" class="form-control"
+                   value="{{ request.form['title'] }}">
+        </div>
+        <div class="form-control">
+            <label for="content"> Content </label>
+            <textarea name="content" id="content"  placeholder="Post content" class="form-control">
+                {{ request.form['title'] }}
+            </textarea>
+        </div>
+        <div class="form-control">
+            <label for="user"> Author </label>
+            <input type="text" name="user" id="user"  placeholder="Post author" class="form-control"
+                   value="{{ request.form['user'] }}">
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class ="flashes">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+
+</div>
+
+{% endblock %}
