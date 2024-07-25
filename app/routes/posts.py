@@ -1,7 +1,7 @@
 from app import app, db
 from flask import render_template, request, flash, redirect, url_for
 from app.models import Post
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 @app.route("/")
@@ -26,7 +26,7 @@ def create():
     if request.method == "POST":
         title = request.form["title"]
         content = request.form["content"]
-        user = request.form["user"]
+        user = current_user
 
         if not title:
             flash("Поле title необхідне для заповнювання")
@@ -49,7 +49,7 @@ def edit(post_id):
     if request.method == "POST":
         title = request.form["title"]
         content = request.form["content"]
-        user = request.form["user"]
+        user = current_user
         if not title:
             flash("Поле title необхідне для заповнювання")
         else:

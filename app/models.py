@@ -28,8 +28,8 @@ class User(UserMixin, db.Model):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     nickname: Mapped[str] = mapped_column(String(25), unique=True)
-    email: Mapped[str] = mapped_column(String(50), unique=True)
-    password: Mapped[str] = mapped_column(String(50))
+    email: Mapped[str] = mapped_column(String(250), unique=True)
+    password: Mapped[str] = mapped_column(String(250))
 
     posts: Mapped[List["Post"]] = relationship(back_populates='user')
 
